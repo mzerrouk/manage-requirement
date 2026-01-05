@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Invoice Report Template -->
+    <record id="report_requirement_invoice" model="ir.actions.report">
+        <field name="name">Requirement Invoice</field>
+        <field name="model">requirement.invoice</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">requirement_app.report_invoice_document</field>
+        <field name="report_file">requirement_app.report_invoice_document</field>
+        <field name="binding_model_id" ref="model_requirement_invoice"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- Invoice Report QWeb Template -->
+    <template id="report_invoice_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Requirement Invoice</h2>
+                        
+                        <div class="row mt32 mb32">
+                            <div class="col-6">
+                                <strong>Invoice Reference:</strong>
+                                <p t-field="o.name"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Date:</strong>
+                                <p t-field="o.date"/>
+                            </div>
+                        </div>
+
+                        <div class="row mb32" t-if="o.project_id">
+                            <div class="col-12">
+                                <strong>Project:</strong>
+                                <p t-field="o.project_id.name"/>
+                            </div>
+                        </div>
+
+                        <h3>Requirements</h3>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Requirement</th>
+                                    <th>Type</th>
+                                    <th>Status</th>
+                                    <th class="text-right">Change Cost</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.requirement_ids" t-as="req">
+                                    <td><span t-field="req.name"/></td>
+                                    <td><span t-field="req.type"/></td>
+                                    <td><span t-field="req.status"/></td>
+                                    <td class="text-right">
+                                        <span t-field="req.total_change_cost" 
+                                              t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="row">
+                            <div class="col-6 offset-6">
+                                <table class="table table-sm">
+                                    <tr class="border-black">
+                                        <td><strong>Total Cost</strong></td>
+                                        <td class="text-right">
+                                            <strong>
+                                                <span t-field="o.total_cost" 
+                                                      t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="row mt32" t-if="o.notes">
+                            <div class="col-12">
+                                <strong>Notes:</strong>
+                                <p t-field="o.notes"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

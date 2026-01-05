@@ -1,0 +1,20 @@
+{
+    'name': 'Requirement Management',
+    'version': '1.0',
+    'category': 'Project',
+    'summary': 'Complete requirement management system with change tracking',
+    'description': 'A comprehensive application to track and manage project requirements with change requests, comments, and hierarchical structure',
+    'depends': ['base', 'mail'],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/requirement_view.xml',
+        'views/requirement_change_view.xml',
+        'views/comment_view.xml',
+        'views/project_view.xml',
+        'views/invoice_view.xml',
+        'reports/invoice_report.xml',
+        'data/demo_data.xml',
+    ],
+    'installable': True,
+    'application': True,
+}

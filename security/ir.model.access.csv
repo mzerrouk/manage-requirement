@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_requirement_requirement_user,requirement.requirement.user,model_requirement_requirement,base.group_user,1,1,1,1
+access_requirement_change_user,requirement.change.user,model_requirement_change,base.group_user,1,1,1,1
+access_requirement_comment_user,requirement.comment.user,model_requirement_comment,base.group_user,1,1,1,1
+access_requirement_project_user,requirement.project.user,model_requirement_project,base.group_user,1,1,1,1
+access_requirement_invoice_user,requirement.invoice.user,model_requirement_invoice,base.group_user,1,1,1,1

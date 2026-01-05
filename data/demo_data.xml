@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        
+        <!-- Projects -->
+        <record id="project_ecommerce" model="requirement.project">
+            <field name="name">E-Commerce Platform</field>
+            <field name="description">Complete e-commerce solution with shopping cart, payment integration, and order management</field>
+        </record>
+        
+        <record id="project_mobile_app" model="requirement.project">
+            <field name="name">Mobile Banking App</field>
+            <field name="description">Mobile application for banking services including transfers, bill payments, and account management</field>
+        </record>
+        
+        <record id="project_crm" model="requirement.project">
+            <field name="name">CRM System</field>
+            <field name="description">Customer Relationship Management system for sales and marketing teams</field>
+        </record>
+        
+        <record id="project_inventory" model="requirement.project">
+            <field name="name">Inventory Management System</field>
+            <field name="description">Warehouse and inventory tracking system with real-time stock updates</field>
+        </record>
+        
+        <record id="project_hr" model="requirement.project">
+            <field name="name">HR Management Portal</field>
+            <field name="description">Employee management, attendance tracking, and payroll system</field>
+        </record>
+        
+        <!-- ========== E-COMMERCE PLATFORM ========== -->
+        <!-- Epic 1: User Management -->
+        <record id="req_user_management" model="requirement.requirement">
+            <field name="name">User Management System</field>
+            <field name="description">Complete user authentication and profile management system</field>
+            <field name="type">epic</field>
+            <field name="priority">high</field>
+            <field name="status">in_progress</field>
+            <field name="project_id" ref="project_ecommerce"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_user_registration" model="requirement.requirement">
+            <field name="name">User Registration</field>
+            <field name="description">As a new user, I want to register an account so that I can shop on the platform</field>
+            <field name="type">user_story</field>
+            <field name="priority">high</field>
+            <field name="status">done</field>
+            <field name="project_id" ref="project_ecommerce"/>
+            <field name="parent_id" ref="req_user_management"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_email_verification" model="requirement.requirement">
+            <field name="name">Email Verification</field>
+            <field name="description">Implement email verification during registration</field>
+            <field name="type">task</field>
+            <field name="priority">high</field>
+            <field name="status">done</field>
+            <field name="project_id" ref="project_ecommerce"/>
+            <field name="parent_id" ref="req_user_registration"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_user_login" model="requirement.requirement">
+            <field name="name">User Login</field>
+            <field name="description">As a registered user, I want to login to my account so that I can access my profile and orders</field>
+            <field name="type">user_story</field>
+            <field name="priority">high</field>
+            <field name="status">done</field>
+            <field name="project_id" ref="project_ecommerce"/>
+            <field name="parent_id" ref="req_user_management"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_oauth_login" model="requirement.requirement">
+            <field name="name">OAuth Social Login</field>
+            <field name="description">Implement Google and Facebook OAuth login</field>
+            <field name="type">task</field>
+            <field name="priority">medium</field>
+            <field name="status">in_progress</field>
+            <field name="project_id" ref="project_ecommerce"/>
+            <field name="parent_id" ref="req_user_login"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_password_reset" model="requirement.requirement">
+            <field name="name">Password Reset</field>
+            <field name="description">As a user, I want to reset my password if I forget it</field>
+            <field name="type">user_story</field>
+            <field name="priority">medium</field>
+            <field name="status">in_progress</field>
+            <field name="project_id" ref="project_ecommerce"/>
+            <field name="parent_id" ref="req_user_management"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_user_profile" model="requirement.requirement">
+            <field name="name">User Profile Management</field>
+            <field name="description">As a user, I want to update my profile information including address and preferences</field>
+            <field name="type">user_story</field>
+            <field name="priority">medium</field>
+            <field name="status">approved</field>
+            <field name="project_id" ref="project_ecommerce"/>
+            <field name="parent_id" ref="req_user_management"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <!-- Epic 2: Shopping Cart -->
+        <record id="req_shopping_cart" model="requirement.requirement">
+            <field name="name">Shopping Cart System</field>
+            <field name="description">Shopping cart functionality for adding, removing, and managing products</field>
+            <field name="type">epic</field>
+            <field name="priority">critical</field>
+            <field name="status">in_progress</field>
+            <field name="project_id" ref="project_ecommerce"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_add_to_cart" model="requirement.requirement">
+            <field name="name">Add Product to Cart</field>
+            <field name="description">As a shopper, I want to add products to my cart so that I can purchase them later</field>
+            <field name="type">user_story</field>
+            <field name="priority">critical</field>
+            <field name="status">done</field>
+            <field name="project_id" ref="project_ecommerce"/>
+            <field name="parent_id" ref="req_shopping_cart"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_update_cart_quantity" model="requirement.requirement">
+            <field name="name">Update Cart Quantity</field>
+            <field name="description">As a shopper, I want to update product quantities in my cart</field>
+            <field name="type">user_story</field>
+            <field name="priority">high</field>
+            <field name="status">in_progress</field>
+            <field name="project_id" ref="project_ecommerce"/>
+            <field name="parent_id" ref="req_shopping_cart"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_remove_from_cart" model="requirement.requirement">
+            <field name="name">Remove Product from Cart</field>
+            <field name="description">As a shopper, I want to remove products from my cart</field>
+            <field name="type">user_story</field>
+            <field name="priority">high</field>
+            <field name="status">approved</field>
+            <field name="project_id" ref="project_ecommerce"/>
+            <field name="parent_id" ref="req_shopping_cart"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_cart_summary" model="requirement.requirement">
+            <field name="name">Cart Summary Display</field>
+            <field name="description">As a shopper, I want to see a summary of my cart with total price and item count</field>
+            <field name="type">user_story</field>
+            <field name="priority">high</field>
+            <field name="status">approved</field>
+            <field name="project_id" ref="project_ecommerce"/>
+            <field name="parent_id" ref="req_shopping_cart"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_save_for_later" model="requirement.requirement">
+            <field name="name">Save Items for Later</field>
+            <field name="description">As a shopper, I want to save items for later purchase</field>
+            <field name="type">user_story</field>
+            <field name="priority">low</field>
+            <field name="status">draft</field>
+            <field name="project_id" ref="project_ecommerce"/>
+            <field name="parent_id" ref="req_shopping_cart"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <!-- Epic 3: Payment Processing -->
+        <record id="req_payment_system" model="requirement.requirement">
+            <field name="name">Payment Processing System</field>
+            <field name="description">Secure payment processing with multiple payment methods</field>
+            <field name="type">epic</field>
+            <field name="priority">critical</field>
+            <field name="status">approved</field>
+            <field name="project_id" ref="project_ecommerce"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_credit_card_payment" model="requirement.requirement">
+            <field name="name">Credit Card Payment</field>
+            <field name="description">As a customer, I want to pay with credit card so that I can complete my purchase</field>
+            <field name="type">user_story</field>
+            <field name="priority">critical</field>
+            <field name="status">approved</field>
+            <field name="project_id" ref="project_ecommerce"/>
+            <field name="parent_id" ref="req_payment_system"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_paypal_integration" model="requirement.requirement">
+            <field name="name">PayPal Integration</field>
+            <field name="description">As a customer, I want to pay using PayPal</field>
+            <field name="type">user_story</field>
+            <field name="priority">high</field>
+            <field name="status">draft</field>
+            <field name="project_id" ref="project_ecommerce"/>
+            <field name="parent_id" ref="req_payment_system"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_payment_security" model="requirement.requirement">
+            <field name="name">PCI DSS Compliance</field>
+            <field name="description">Ensure payment processing meets PCI DSS security standards</field>
+            <field name="type">task</field>
+            <field name="priority">critical</field>
+            <field name="status">approved</field>
+            <field name="project_id" ref="project_ecommerce"/>
+            <field name="parent_id" ref="req_payment_system"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <!-- Epic 4: Order Management -->
+        <record id="req_order_management" model="requirement.requirement">
+            <field name="name">Order Management System</field>
+            <field name="description">Complete order tracking and management functionality</field>
+            <field name="type">epic</field>
+            <field name="priority">high</field>
+            <field name="status">draft</field>
+            <field name="project_id" ref="project_ecommerce"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_order_history" model="requirement.requirement">
+            <field name="name">Order History</field>
+            <field name="description">As a customer, I want to view my order history</field>
+            <field name="type">user_story</field>
+            <field name="priority">high</field>
+            <field name="status">draft</field>
+            <field name="project_id" ref="project_ecommerce"/>
+            <field name="parent_id" ref="req_order_management"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_order_tracking" model="requirement.requirement">
+            <field name="name">Order Tracking</field>
+            <field name="description">As a customer, I want to track my order status in real-time</field>
+            <field name="type">user_story</field>
+            <field name="priority">high</field>
+            <field name="status">draft</field>
+            <field name="project_id" ref="project_ecommerce"/>
+            <field name="parent_id" ref="req_order_management"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <!-- ========== MOBILE BANKING APP ========== -->
+        <record id="req_banking_security" model="requirement.requirement">
+            <field name="name">Security &amp; Authentication</field>
+            <field name="description">Multi-factor authentication and biometric security</field>
+            <field name="type">epic</field>
+            <field name="priority">critical</field>
+            <field name="status">in_progress</field>
+            <field name="project_id" ref="project_mobile_app"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_biometric_auth" model="requirement.requirement">
+            <field name="name">Biometric Authentication</field>
+            <field name="description">As a user, I want to login using fingerprint or face recognition</field>
+            <field name="type">user_story</field>
+            <field name="priority">critical</field>
+            <field name="status">in_progress</field>
+            <field name="project_id" ref="project_mobile_app"/>
+            <field name="parent_id" ref="req_banking_security"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_two_factor_auth" model="requirement.requirement">
+            <field name="name">Two-Factor Authentication</field>
+            <field name="description">As a user, I want 2FA for sensitive transactions</field>
+            <field name="type">user_story</field>
+            <field name="priority">critical</field>
+            <field name="status">approved</field>
+            <field name="project_id" ref="project_mobile_app"/>
+            <field name="parent_id" ref="req_banking_security"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_account_overview" model="requirement.requirement">
+            <field name="name">Account Overview Dashboard</field>
+            <field name="description">As a user, I want to see an overview of all my accounts and balances</field>
+            <field name="type">user_story</field>
+            <field name="priority">critical</field>
+            <field name="status">done</field>
+            <field name="project_id" ref="project_mobile_app"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_fund_transfer" model="requirement.requirement">
+            <field name="name">Fund Transfer</field>
+            <field name="description">As a user, I want to transfer money between accounts or to other users</field>
+            <field name="type">user_story</field>
+            <field name="priority">critical</field>
+            <field name="status">in_progress</field>
+            <field name="project_id" ref="project_mobile_app"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_transfer_limits" model="requirement.requirement">
+            <field name="name">Transfer Limits Configuration</field>
+            <field name="description">Implement daily and per-transaction transfer limits</field>
+            <field name="type">task</field>
+            <field name="priority">high</field>
+            <field name="status">in_progress</field>
+            <field name="project_id" ref="project_mobile_app"/>
+            <field name="parent_id" ref="req_fund_transfer"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_bill_payment" model="requirement.requirement">
+            <field name="name">Bill Payment</field>
+            <field name="description">As a user, I want to pay my bills directly from the app</field>
+            <field name="type">user_story</field>
+            <field name="priority">high</field>
+            <field name="status">approved</field>
+            <field name="project_id" ref="project_mobile_app"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_transaction_history" model="requirement.requirement">
+            <field name="name">Transaction History</field>
+            <field name="description">As a user, I want to view my complete transaction history with filters</field>
+            <field name="type">user_story</field>
+            <field name="priority">high</field>
+            <field name="status">approved</field>
+            <field name="project_id" ref="project_mobile_app"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_notifications" model="requirement.requirement">
+            <field name="name">Push Notifications</field>
+            <field name="description">As a user, I want to receive notifications for transactions and account activities</field>
+            <field name="type">user_story</field>
+            <field name="priority">medium</field>
+            <field name="status">draft</field>
+            <field name="project_id" ref="project_mobile_app"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <!-- ========== CRM SYSTEM ========== -->
+        <record id="req_lead_management" model="requirement.requirement">
+            <field name="name">Lead Management</field>
+            <field name="description">Complete lead tracking and management system</field>
+            <field name="type">epic</field>
+            <field name="priority">high</field>
+            <field name="status">in_progress</field>
+            <field name="project_id" ref="project_crm"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_lead_capture" model="requirement.requirement">
+            <field name="name">Lead Capture Forms</field>
+            <field name="description">As a marketing manager, I want to capture leads from web forms</field>
+            <field name="type">user_story</field>
+            <field name="priority">high</field>
+            <field name="status">in_progress</field>
+            <field name="project_id" ref="project_crm"/>
+            <field name="parent_id" ref="req_lead_management"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_lead_assignment" model="requirement.requirement">
+            <field name="name">Automatic Lead Assignment</field>
+            <field name="description">As a sales manager, I want leads to be automatically assigned to sales reps based on rules</field>
+            <field name="type">user_story</field>
+            <field name="priority">high</field>
+            <field name="status">approved</field>
+            <field name="project_id" ref="project_crm"/>
+            <field name="parent_id" ref="req_lead_management"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_contact_management" model="requirement.requirement">
+            <field name="name">Contact Management</field>
+            <field name="description">As a sales rep, I want to manage customer contacts and their information</field>
+            <field name="type">user_story</field>
+            <field name="priority">high</field>
+            <field name="status">done</field>
+            <field name="project_id" ref="project_crm"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_sales_pipeline" model="requirement.requirement">
+            <field name="name">Sales Pipeline Visualization</field>
+            <field name="description">As a sales manager, I want to visualize the sales pipeline with drag-and-drop stages</field>
+            <field name="type">user_story</field>
+            <field name="priority">high</field>
+            <field name="status">approved</field>
+            <field name="project_id" ref="project_crm"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_email_integration" model="requirement.requirement">
+            <field name="name">Email Integration</field>
+            <field name="description">As a sales rep, I want to send and track emails from within the CRM</field>
+            <field name="type">user_story</field>
+            <field name="priority">medium</field>
+            <field name="status">draft</field>
+            <field name="project_id" ref="project_crm"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_reporting" model="requirement.requirement">
+            <field name="name">Sales Reporting &amp; Analytics</field>
+            <field name="description">As a sales manager, I want to generate reports on sales performance and forecasts</field>
+            <field name="type">user_story</field>
+            <field name="priority">medium</field>
+            <field name="status">draft</field>
+            <field name="project_id" ref="project_crm"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <!-- ========== INVENTORY MANAGEMENT ========== -->
+        <record id="req_stock_tracking" model="requirement.requirement">
+            <field name="name">Real-time Stock Tracking</field>
+            <field name="description">As a warehouse manager, I want to track stock levels in real-time</field>
+            <field name="type">user_story</field>
+            <field name="priority">critical</field>
+            <field name="status">in_progress</field>
+            <field name="project_id" ref="project_inventory"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_barcode_scanning" model="requirement.requirement">
+            <field name="name">Barcode Scanning</field>
+            <field name="description">As a warehouse staff, I want to scan barcodes to update inventory</field>
+            <field name="type">user_story</field>
+            <field name="priority">high</field>
+            <field name="status">approved</field>
+            <field name="project_id" ref="project_inventory"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_low_stock_alerts" model="requirement.requirement">
+            <field name="name">Low Stock Alerts</field>
+            <field name="description">As a warehouse manager, I want to receive alerts when stock falls below threshold</field>
+            <field name="type">user_story</field>
+            <field name="priority">high</field>
+            <field name="status">approved</field>
+            <field name="project_id" ref="project_inventory"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_multi_warehouse" model="requirement.requirement">
+            <field name="name">Multi-Warehouse Support</field>
+            <field name="description">As a operations manager, I want to manage inventory across multiple warehouses</field>
+            <field name="type">user_story</field>
+            <field name="priority">medium</field>
+            <field name="status">draft</field>
+            <field name="project_id" ref="project_inventory"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <!-- ========== HR MANAGEMENT ========== -->
+        <record id="req_employee_onboarding" model="requirement.requirement">
+            <field name="name">Employee Onboarding</field>
+            <field name="description">As an HR manager, I want to streamline the employee onboarding process</field>
+            <field name="type">user_story</field>
+            <field name="priority">high</field>
+            <field name="status">in_progress</field>
+            <field name="project_id" ref="project_hr"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_attendance_tracking" model="requirement.requirement">
+            <field name="name">Attendance Tracking</field>
+            <field name="description">As an HR manager, I want to track employee attendance and work hours</field>
+            <field name="type">user_story</field>
+            <field name="priority">high</field>
+            <field name="status">approved</field>
+            <field name="project_id" ref="project_hr"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_leave_management" model="requirement.requirement">
+            <field name="name">Leave Management</field>
+            <field name="description">As an employee, I want to request and track my leave applications</field>
+            <field name="type">user_story</field>
+            <field name="priority">high</field>
+            <field name="status">approved</field>
+            <field name="project_id" ref="project_hr"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_payroll_processing" model="requirement.requirement">
+            <field name="name">Payroll Processing</field>
+            <field name="description">As an HR manager, I want to process monthly payroll automatically</field>
+            <field name="type">user_story</field>
+            <field name="priority">critical</field>
+            <field name="status">draft</field>
+            <field name="project_id" ref="project_hr"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <record id="req_performance_reviews" model="requirement.requirement">
+            <field name="name">Performance Review System</field>
+            <field name="description">As a manager, I want to conduct and track employee performance reviews</field>
+            <field name="type">user_story</field>
+            <field name="priority">medium</field>
+            <field name="status">draft</field>
+            <field name="project_id" ref="project_hr"/>
+            <field name="owner_id" ref="base.user_admin"/>
+        </record>
+        
+        <!-- ========== CHANGE REQUESTS ========== -->
+        <record id="change_password_complexity" model="requirement.change">
+            <field name="requirement_id" ref="req_password_reset"/>
+            <field name="change_type">add_detail</field>
+            <field name="description">Add password complexity requirements: minimum 8 characters, at least one uppercase, one lowercase, one number, and one special character</field>
+            <field name="requested_by" ref="base.user_admin"/>
+            <field name="status">approved</field>
+            <field name="approved_by" ref="base.user_admin"/>
+        </record>
+        
+        <record id="change_cart_persistence" model="requirement.change">
+            <field name="requirement_id" ref="req_shopping_cart"/>
+            <field name="change_type">add_detail</field>
+            <field name="description">Shopping cart should persist across sessions and devices for logged-in users</field>
+            <field name="requested_by" ref="base.user_admin"/>
+            <field name="status">approved</field>
+            <field name="approved_by" ref="base.user_admin"/>
+        </record>
+        
+        <record id="change_payment_methods" model="requirement.change">
+            <field name="requirement_id" ref="req_payment_system"/>
+            <field name="change_type">update</field>
+            <field name="description">Add support for PayPal and Apple Pay in addition to credit cards</field>
+            <field name="requested_by" ref="base.user_admin"/>
+            <field name="status">approved</field>
+            <field name="approved_by" ref="base.user_admin"/>
+        </record>
+        
+        <record id="change_remove_old_feature" model="requirement.change">
+            <field name="requirement_id" ref="req_user_login"/>
+            <field name="change_type">remove</field>
+            <field name="description">Remove support for login via username, only allow email-based login</field>
+            <field name="requested_by" ref="base.user_admin"/>
+            <field name="status">rejected</field>
+            <field name="approved_by" ref="base.user_admin"/>
+        </record>
+        
+        <record id="change_biometric_devices" model="requirement.change">
+            <field name="requirement_id" ref="req_biometric_auth"/>
+            <field name="change_type">add_detail</field>
+            <field name="description">Extend biometric support to include iris scanning for high-security devices</field>
+            <field name="requested_by" ref="base.user_admin"/>
+            <field name="status">pending</field>
+        </record>
+        
+        <record id="change_transfer_speed" model="requirement.change">
+            <field name="requirement_id" ref="req_fund_transfer"/>
+            <field name="change_type">update</field>
+            <field name="description">Implement instant transfers for same-bank transactions instead of standard processing time</field>
+            <field name="requested_by" ref="base.user_admin"/>
+            <field name="status">pending</field>
+        </record>
+        
+        <record id="change_lead_scoring" model="requirement.change">
+            <field name="requirement_id" ref="req_lead_management"/>
+            <field name="change_type">add_detail</field>
+            <field name="description">Add AI-powered lead scoring to prioritize high-value leads automatically</field>
+            <field name="requested_by" ref="base.user_admin"/>
+            <field name="status">pending</field>
+        </record>
+        
+        <record id="change_inventory_forecast" model="requirement.change">
+            <field name="requirement_id" ref="req_stock_tracking"/>
+            <field name="change_type">add_detail</field>
+            <field name="description">Add predictive analytics for inventory forecasting based on historical data</field>
+            <field name="requested_by" ref="base.user_admin"/>
+            <field name="status">approved</field>
+            <field name="approved_by" ref="base.user_admin"/>
+        </record>
+        
+        <record id="change_mobile_attendance" model="requirement.change">
+            <field name="requirement_id" ref="req_attendance_tracking"/>
+            <field name="change_type">add_detail</field>
+            <field name="description">Add mobile app support for attendance check-in with GPS verification</field>
+            <field name="requested_by" ref="base.user_admin"/>
+            <field name="status">pending</field>
+        </record>
+        
+        <record id="change_guest_checkout" model="requirement.change">
+            <field name="requirement_id" ref="req_shopping_cart"/>
+            <field name="change_type">add_detail</field>
+            <field name="description">Allow guest checkout without requiring user registration</field>
+            <field name="requested_by" ref="base.user_admin"/>
+            <field name="status">pending</field>
+        </record>
+        
+        <!-- ========== COMMENTS ========== -->
+        <record id="comment_password_reset_1" model="requirement.comment">
+            <field name="requirement_id" ref="req_password_reset"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="content">We should implement email verification for password reset to ensure security</field>
+        </record>
+        
+        <record id="comment_password_reset_2" model="requirement.comment">
+            <field name="requirement_id" ref="req_password_reset"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="content">Agreed. Also consider adding SMS verification as an option for users without email access</field>
+        </record>
+        
+        <record id="comment_shopping_cart_1" model="requirement.comment">
+            <field name="requirement_id" ref="req_add_to_cart"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="content">Should we show a notification when a product is added to cart? Maybe a toast message?</field>
+        </record>
+        
+        <record id="comment_shopping_cart_2" model="requirement.comment">
+            <field name="requirement_id" ref="req_add_to_cart"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="content">Yes, and also update the cart icon badge count in the header</field>
+        </record>
+        
+        <record id="comment_change_1" model="requirement.comment">
+            <field name="change_id" ref="change_cart_persistence"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="content">This is a great feature request. We should prioritize this for the next sprint</field>
+        </record>
+        
+        <record id="comment_payment_1" model="requirement.comment">
+            <field name="requirement_id" ref="req_credit_card_payment"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="content">We need to ensure PCI DSS compliance for credit card processing. Let's schedule a security audit</field>
+        </record>
+        
+        <record id="comment_payment_2" model="requirement.comment">
+            <field name="requirement_id" ref="req_payment_security"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="content">Stripe and Braintree are both PCI compliant. We should evaluate both options</field>
+        </record>
+        
+        <record id="comment_fund_transfer_1" model="requirement.comment">
+            <field name="requirement_id" ref="req_fund_transfer"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="content">Consider adding transfer limits and daily transaction caps for security</field>
+        </record>
+        
+        <record id="comment_fund_transfer_2" model="requirement.comment">
+            <field name="requirement_id" ref="req_transfer_limits"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="content">Default limits: $5,000 per transaction, $10,000 daily. Users can request increases</field>
+        </record>
+        
+        <record id="comment_biometric_1" model="requirement.comment">
+            <field name="requirement_id" ref="req_biometric_auth"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="content">Make sure to have a fallback authentication method in case biometric fails</field>
+        </record>
+        
+        <record id="comment_lead_1" model="requirement.comment">
+            <field name="requirement_id" ref="req_lead_capture"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="content">We should integrate with popular form builders like Typeform and Google Forms</field>
+        </record>
+        
+        <record id="comment_lead_2" model="requirement.comment">
+            <field name="requirement_id" ref="req_lead_assignment"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="content">Assignment rules should consider: geography, product expertise, and current workload</field>
+        </record>
+        
+        <record id="comment_inventory_1" model="requirement.comment">
+            <field name="requirement_id" ref="req_barcode_scanning"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="content">Support both 1D and 2D barcodes (QR codes). Consider using Zebra scanners</field>
+        </record>
+        
+        <record id="comment_inventory_2" model="requirement.comment">
+            <field name="requirement_id" ref="req_low_stock_alerts"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="content">Alert thresholds should be configurable per product category</field>
+        </record>
+        
+        <record id="comment_hr_1" model="requirement.comment">
+            <field name="requirement_id" ref="req_leave_management"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="content">Include different leave types: vacation, sick leave, personal days, and unpaid leave</field>
+        </record>
+        
+        <record id="comment_hr_2" model="requirement.comment">
+            <field name="requirement_id" ref="req_payroll_processing"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="content">Integrate with accounting software like QuickBooks for seamless financial reporting</field>
+        </record>
+        
+        <record id="comment_change_2" model="requirement.comment">
+            <field name="change_id" ref="change_lead_scoring"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="content">This would be a game changer! We should explore ML models for this</field>
+        </record>
+        
+        <record id="comment_oauth_1" model="requirement.comment">
+            <field name="requirement_id" ref="req_oauth_login"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="content">Also consider adding Microsoft and Apple sign-in options</field>
+        </record>
+        
+        <record id="comment_order_1" model="requirement.comment">
+            <field name="requirement_id" ref="req_order_tracking"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="content">Integrate with shipping carriers (FedEx, UPS, DHL) for real-time tracking updates</field>
+        </record>
+        
+    </data>
+</odoo>
